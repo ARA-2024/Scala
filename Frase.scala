@@ -1,7 +1,7 @@
 import scala.collection.mutable.ArrayBuffer
 import scala.io.StdIn
 
-object Ejemplo {
+object Frase {
   def main(args: Array[String]): Unit = {
     val userData: ArrayBuffer[String] = ArrayBuffer.empty[String]
     print("Inserta una frase: ")
