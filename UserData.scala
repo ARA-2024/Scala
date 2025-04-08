@@ -24,4 +24,8 @@ object UserData {
     println("Datos usuario: " + dataMutable.mkString(", "))
 
   }
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> ce8ca3a843d6a2efe996422791eb44aa7d442848
