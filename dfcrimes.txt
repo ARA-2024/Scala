@@ -1,0 +1,46 @@
+val df = spark.read.option("header", "true").option("inferSchema", "true").option("delimiter", ";").csv("data_act_01.csv")
+
+df.show()
+
+df.printSchema()
+
+df.filter($"OriginalCrimeTypeName" === "Passing Call").show()
+
+df.filter($"OriginalCrimeTypeName" === "Passing Call" && $"City" === "San Francisco").show()
+
+df.filter($"OriginalCrimeTypeName" === "Passing Call" || $"City" === "San Francisco").show()
+//only showing top 20 rows
+
+df.filter($"OriginalCrimeTypeName" === "Passing Call" || $"City" === "San Francisco").show(200)
+
+import org.apache.spark.sql.functions.col
+df.filter("OriginalCrimeTypeName = 'Passing Call' OR City = 'San Francisco'").show()
+
+df.filter($"Address".contains("Block")).show()
+
+df.filter($"CallTime".contains("6:34")).show()  // filtra 16:34 y 6:34
+
+df.filter($"CallTime" === "6:34").show()
+
+df.filter($"CallTime" === "06:34").show()
+
+df.filter($"CallTime" === "18:42").show()
+
+df.filter($"CallTime" === "8:42").show()
+
+df.filter($"CallTime" === "08:42").show()
+
+//spark-shell --packages org.mongodb.spark:mongo-spark-connector_2.12:3.0.1
+val mongoUri = "mongodb://localhost:27017/newDB.crimes" //BD y coleccion directamente
+// Escribe el DataFrame en MongoDB
+df.write.format("mongo").option("uri", mongoUri).mode("append").save()
+
+val mongoUri = "mongodb://localhost:27017/newDB.crimes"
+// Lee la colección de MongoDB como DataFrame
+val df2 = spark.read.format("mongo").option("uri", mongoUri).load()
+// Muestra las primeras filas y el esquema
+df2.show()
+df2.printSchema()
+
+
+
