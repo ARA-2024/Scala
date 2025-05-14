@@ -1,0 +1,18 @@
+{
+   "autorId": 1001,
+   "autor": "Autor1",
+   "libros": [
+      "Libro11",
+      "Libro12",
+      "Libro13"
+   ]
+},
+{
+   "autorId": 1002,
+   "autor": "Autor2",
+   "libros": [
+     "Libro21",
+     "Libro22",
+     "Libro23"
+   ]
+}

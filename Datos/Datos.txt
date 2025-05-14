@@ -1,0 +1,16 @@
+// Leer un CSV
+val dfCSV = leerCSV("resuelto1.csv")(spark)
+dfCSV.show()
+
+// Leer JSON de una API
+val dfAPI = fetchJSON("https://api.github.com/users/timmywheels/repos")(spark)
+dfAPI.show()
+
+val dfAPI = fetchJSON("https://api.github.com/users/ARA-2024/repos")(spark)
+dfAPI.show()
+
+// Leer de MongoDB
+val dfMongo = leerMongo("mongodb://localhost:27017/","workersDB", "workers")(spark)
+val dfMongo = leerMongo("mongodb://localhost:27017/","API_ZARAGOZA", "calles")(spark)
+dfMongo.show()
+
