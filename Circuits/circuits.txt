@@ -1,0 +1,3 @@
+val df = spark.read.option("header", "true").option("inferSchema", "true").option("delimiter", ",").csv("C:\\spark\\spark-3.5.5-bin-hadoop3\\bin\\Global_Superstore2.csv")
+
+dfFinal.write.mode("overwrite").partitionBy("Country").parquet("superstore_ventas_filtradas")
